@@ -1,0 +1,280 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #F9F9F9;
+}
+
+body{
+    color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    max-width: 1440px;
+    display: grid;
+}
+
+.home_page{
+    background-color: #1E293B;
+}
+
+button.button_search:hover{
+    background-color:#14B8A6;
+}
+
+/* input.input_search:hover{
+    border-radius:5% ;
+} */
+
+a{
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: #111A30; /* Новый цвет при наведении */
+  }
+  
+select{
+    text-align: left;
+}
+
+option {
+    padding-left: 20px;
+    text-align: left; /* Задаем отступ слева для текста */
+}
+
+option:hover {
+    box-shadow: 0 0 10px 100px orange inset;
+    }
+
+.wrapper{
+    display: grid;
+    grid-template-areas:
+                    "sidebar header"
+                    "sidebar content"
+                    "sidebar content2"
+                    "sidebar fake_block";
+    max-width: 1440px;
+    grid-template-rows: auto;
+    grid-template-columns: 280px auto;
+    width: 100%;
+    height: 100%;
+}
+
+.fake_block{
+    grid-area: fake_block;
+    height: 100%;
+    min-height: 900px;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+.sidebar{
+    grid-area: sidebar;
+    width: 280px;
+    height: 100%;
+    background-color: #0F172A;
+}
+.logo{
+    margin-left: 32px;
+    margin-top: 24px;
+}
+
+.menu{
+    margin-top: 48px;
+}
+
+.menu *{
+    display: flex;
+    height: 59px;
+    padding-top:9px;
+}
+
+.menu * p{
+    margin-left: 12px;
+    font-size: 16px;
+    color: #9CA3AF;
+}
+
+.menu * img{
+    margin-left: 32px;
+    width: 24px;
+    height: 24px;
+}
+
+.header{
+    background-color: #FFFFFF;
+    display: flex;
+    color: #0F172A;
+    justify-content:space-between;
+    height: 108px;
+    width: 1160px;
+}
+.header h1{
+    margin-left: 48px;
+    margin-top: 40px;
+    font-size: 24px;
+}
+.header div{
+    margin-top: 32px;
+    width: 200px;
+    height: 44px;
+}
+
+.name{
+    font-size: 16px;
+    color: #0F172A;
+}
+
+.email{
+    color: #9CA3AF;
+}
+hr{
+    margin: 0;
+    height: 1px;
+    color: #D1D5DB;
+}
+
+.fond_name img{
+    border-radius: 50%;
+    margin-top: 15px;
+}
+
+
+.header_span{
+    grid-area: header;
+    width: 100%;
+    min-width:1160px;
+    height: 108px;
+}
+
+.searching{
+    margin-top: 48px;
+    margin-left: 48px;
+    grid-area: content;
+    height: 50px;
+    background-color: #F9F9F9;
+}
+
+.searching input{
+    width: 240px;
+    height: 46px;
+    background-image: url(../static/images/Search.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 25px 25px;
+    background-position: 10px center;
+    padding-left: 60px;
+}
+
+.searching select{
+    text-align: center;
+    font-size: 15px;
+    margin-left: 8px;
+    width: 136px;
+    height: 50px;
+}
+
+.searching button{
+    margin-left: 12px;
+    height: 46px;
+    width: 120px;
+    border: none;
+    border-radius: 5px;
+    padding: 0;
+    background-color: #10B981;
+    color: #FFFFFF;
+}
+
+.fonds{
+    grid-area: content2;
+    color: black;
+    margin-left: 36px;
+    margin-top: 12px;
+    display: flex;
+    width: 1160px;
+    flex-wrap: wrap;
+    background-color: #F9F9F9;
+}
+
+
+.fond_item{
+    border: 2px solid #D1D5DB; /* Толщина, стиль и цвет бордера */
+    border-radius: 10px; /* Радиус скругления углов */
+    margin-top: 12px;
+    margin-left: 12px;
+    width: 257px;
+    height: 244px;
+    background-color: #FFFFFF;
+
+}
+
+
+.fond_item img{
+    margin-left: 16px;
+    margin-top: 16px;
+}
+
+.fond_text{
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 16px;
+    height: 76px;
+}
+
+.fond_text h2{
+    margin-top: 6px;
+    font-size: 14px;
+    color: #6B7280;
+}
+
+.data_and_href{
+    display: flex;
+    justify-content: space-between;
+}
+
+.fond{
+    color: black;
+    margin-left: 49px;
+    width: 1003px;
+    margin-top: 51px;
+}
+
+.back{
+    width: 75px;
+    height: 24px;
+}
+
+.back a{
+    display: flex;
+    justify-content: space-between;
+}
+
+.fond_name{
+    display: flex;
+}
+
+.fond_name h1{
+    margin-left: 24px;
+    font-size: 24px;
+}
+
+.fond_text{
+    margin-top: 16px;
+    border-collapse: collapse;
+}
+
+.fond_text td {
+    padding-top: 32px;
+}
+
+.table_heading{
+    width: 300px;
+    vertical-align: top;
+}
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/grants.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <title>Гранты</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <img src="/static/images/Star 7.svg" alt="" class="logo">
+            <div class="menu">
+                <a href="/home_page">
+                    <img src="/static/images/Category.svg" alt="">
+                    <p>Новости</p>
+                </a>
+                <a href="/home/fonds">
+                    <img src="/static/images/Work.svg" alt="">
+                    <p>Фонды</p>
+                </a>
+                <a href="/home/grants" class="home_page">
+                    <img src="/static/images/Emoji.svg" alt="">
+                    <p>Гранты</p>
+                </a>
+                <a class="FAQ" href="/home/FAQ">
+                    <img src="/static/images/Chat 2.svg" alt="">
+                    <p>FAQ</p>
+                </a>
+            </div>
+        </div>
+        <div class="header_span">
+            <div class="header">
+                <h1><b>Гранты</b></h1>
+                <div class="person">
+                    <p class="name">Эллина Кожокарь</p>
+                    <p class="email">linaivashina68@gmail.com</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+        {% if grant %}
+            <div class="grant" style="grid-area: content;">
+                <div class="back">
+                    <a href="#" onclick="history.back()">
+                        <img src="/static/images/Arrow - Left 3.svg" alt="">
+                        <p>Назад</p>
+                    </a>
+                </div>
+                <div class="grant_name">
+                    <img src="{{ grant.image }}" alt="" width="60px" height="60px">
+                    <h1><b>{{grant.title}}</b></h1>
+                </div>
+                <table class="grant_text">
+                    <tr>
+                        <td class="table_heading">Направление</td>
+                        <td class="table_data">{{ grant.direction.name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="table_heading">Статус</td>
+                        <td class="table_data">{{ grant.status.name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="table_heading">Грантодатель</td>
+                        <td class="table_data">{{ grant.foundation.title }}</td>
+                    </tr>
+                    <tr>
+                        <td class="table_heading">Описание</td>
+                        <td class="table_data">{{ grant.description }}</td>
+                    </tr>
+                </table>
+            </div>
+        {% endif %}
+        {% if not grant %}
+            <div class="searching">
+                <form action="/home/grants/results" method="get">
+                    <input type="text" name="title" placeholder="Поиск по названию гранта" required>
+                    <select name="direction" required>
+                        <option value="">Направление</option>
+                        <option value="2">Архитектура</option>
+                        <option value="3">Бизнес</option>
+                        <option value="4">Гуманитарные науки</option>
+                        <option value="5">Дизайн</option>
+                        <option value="6">Краеведение</option>
+                        <option value="7">Литература</option>
+                        <option value="8">Здравоохранения</option>
+                        <option value="9">Компьютерные технологии</option>
+                        <option value="10">Химия</option>
+                        <option value="11">Философия</option>
+                        <option value="12">Экономика</option>
+                        <option value="13">Электроника</option>
+                        <option value="14">Юриспруденция</option>
+                        <option value="15">Другое</option>
+                    </select>
+                    <select name="status" required>
+                        <option value="">Статус</option>
+                        <option value="1">Закрыт</option>
+                        <option value="2">Открыт</option>
+                        <option value="3">Ожидается</option>
+                    </select>
+                    <select name="foundation" required>
+                        <option value="">Фонд</option>
+                        <option value="2">Благотворительный фонд Владимира Потанина</option>
+                        <option value="3">Центр гражданских и социальных инициатив Югры</option>
+                        <option value="4">Комитет по культуре Санкт-Петербурга</option>
+                        <option value="5">ГАУК "РЦРКОО"</option>
+                        <option value="6">Российский фонд развития информационных технологий</option>
+                        <option value="7">Фонд содействия инновациям</option>
+                        <option value="8">Фонд президентских грантов</option>
+                        <option value="9">Фонд «Сколково»</option>
+                        <option value="10">Российский Фонд Фундаментальных Исследований</option>
+                    </select>
+                    <button type="submit" class="button_search">Поиск</button>
+                </form>
+            </div>
+            <div class="grants">
+                {% if grants %}
+                    {% for item in grants %}
+                        <div class="grant_item">
+                            <img src="{{ item.image }}" alt="" width="100px" height="62px">
+                            <div class="grant_item_title">{{ item.title }}</div>
+                            <div class="direction">
+                                <h1>{{ item.direction.name }}</h1>
+                                <p>Направление</p>
+                            </div>
+                            <div class="status">
+                                <h1>{{ item.status.name }}</h1>
+                                <p>Статус</p>
+                            </div>
+                            <div class="grant_giving">
+                                <h1>{{ item.foundation.title }}</h1>
+                                <p>Грантодатель</p>
+                            </div>
+                            <a href="/home/grant/{{item.id}}"><img src="/static/images/Arrow - Right 3.svg" alt="" class="arrow_img"></a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% if not grant %}
+                        <p>No grants found.</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endif %}
+        <div class="fake_block"></div>
+    </div>
+</body>
+</html>
